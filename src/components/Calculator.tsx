@@ -90,6 +90,7 @@ export function Calculator({ initialUnit, compact }: Props) {
   );
 
   const isInvestor = mode === "anleger";
+  const isSurplus = isInvestor && result.monthlyBurden < 0;
 
   return (
     <div className="grid gap-8 lg:grid-cols-[1fr_1.05fr]">
@@ -179,13 +180,18 @@ export function Calculator({ initialUnit, compact }: Props) {
       {/* Ergebnis */}
       <div className="space-y-5">
         <div className="surface-ink p-6">
-          <p className="eyebrow">{isInvestor ? "Monatlicher Eigenaufwand" : "Monatliche Rate"}</p>
-          <p className="mt-2 font-display text-5xl">
-            {eur(Math.max(result.monthlyBurden, 0))}
+          <p className="eyebrow">
+            {isInvestor ? (isSurplus ? "Monatliche Überdeckung" : "Monatliche Unterdeckung") : "Monatliche Rate"}
+          </p>
+          <p className={`mt-2 font-display text-5xl ${isSurplus ? "text-brass" : ""}`}>
+            {isSurplus ? "+" : ""}
+            {eur(Math.abs(result.monthlyBurden))}
           </p>
           <p className="mt-2 text-sm opacity-70">
             {isInvestor
-              ? "Annuität + Hausgeld + Verwaltung − Mieteinnahmen − Steuereffekt (Jahr 1)"
+              ? isSurplus
+                ? "Mieteinnahmen + Steuereffekt (Jahr 1) übersteigen Annuität + Hausgeld + Verwaltung"
+                : "Annuität + Hausgeld + Verwaltung − Mieteinnahmen − Steuereffekt (Jahr 1)"
               : "Annuität inkl. Hausgeld — ohne Miete, ohne AfA"}
           </p>
           <div className="mt-6 grid grid-cols-2 gap-4 border-t border-white/10 pt-5 text-sm">
