@@ -10,33 +10,127 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BaubeschreibungRouteImport } from './routes/baubeschreibung'
+import { Route as KontaktRouteImport } from './routes/kontakt'
+import { Route as LageRouteImport } from './routes/lage'
+import { Route as RechnerRouteImport } from './routes/rechner'
+import { Route as VisualisierungenRouteImport } from './routes/visualisierungen'
+import { Route as WohnungenRouteImport } from './routes/wohnungen'
+import { Route as WohnungenNrRouteImport } from './routes/wohnungen.$nr'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BaubeschreibungRoute = BaubeschreibungRouteImport.update({
+  id: '/baubeschreibung',
+  path: '/baubeschreibung',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KontaktRoute = KontaktRouteImport.update({
+  id: '/kontakt',
+  path: '/kontakt',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LageRoute = LageRouteImport.update({
+  id: '/lage',
+  path: '/lage',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RechnerRoute = RechnerRouteImport.update({
+  id: '/rechner',
+  path: '/rechner',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VisualisierungenRoute = VisualisierungenRouteImport.update({
+  id: '/visualisierungen',
+  path: '/visualisierungen',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WohnungenRoute = WohnungenRouteImport.update({
+  id: '/wohnungen',
+  path: '/wohnungen',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WohnungenNrRoute = WohnungenNrRouteImport.update({
+  id: '/$nr',
+  path: '/$nr',
+  getParentRoute: () => WohnungenRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/baubeschreibung': typeof BaubeschreibungRoute
+  '/kontakt': typeof KontaktRoute
+  '/lage': typeof LageRoute
+  '/rechner': typeof RechnerRoute
+  '/visualisierungen': typeof VisualisierungenRoute
+  '/wohnungen': typeof WohnungenRouteWithChildren
+  '/wohnungen/$nr': typeof WohnungenNrRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/baubeschreibung': typeof BaubeschreibungRoute
+  '/kontakt': typeof KontaktRoute
+  '/lage': typeof LageRoute
+  '/rechner': typeof RechnerRoute
+  '/visualisierungen': typeof VisualisierungenRoute
+  '/wohnungen': typeof WohnungenRouteWithChildren
+  '/wohnungen/$nr': typeof WohnungenNrRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/baubeschreibung': typeof BaubeschreibungRoute
+  '/kontakt': typeof KontaktRoute
+  '/lage': typeof LageRoute
+  '/rechner': typeof RechnerRoute
+  '/visualisierungen': typeof VisualisierungenRoute
+  '/wohnungen': typeof WohnungenRouteWithChildren
+  '/wohnungen/$nr': typeof WohnungenNrRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/baubeschreibung'
+    | '/kontakt'
+    | '/lage'
+    | '/rechner'
+    | '/visualisierungen'
+    | '/wohnungen'
+    | '/wohnungen/$nr'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/baubeschreibung'
+    | '/kontakt'
+    | '/lage'
+    | '/rechner'
+    | '/visualisierungen'
+    | '/wohnungen'
+    | '/wohnungen/$nr'
+  id:
+    | '__root__'
+    | '/'
+    | '/baubeschreibung'
+    | '/kontakt'
+    | '/lage'
+    | '/rechner'
+    | '/visualisierungen'
+    | '/wohnungen'
+    | '/wohnungen/$nr'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BaubeschreibungRoute: typeof BaubeschreibungRoute
+  KontaktRoute: typeof KontaktRoute
+  LageRoute: typeof LageRoute
+  RechnerRoute: typeof RechnerRoute
+  VisualisierungenRoute: typeof VisualisierungenRoute
+  WohnungenRoute: typeof WohnungenRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +142,78 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/baubeschreibung': {
+      id: '/baubeschreibung'
+      path: '/baubeschreibung'
+      fullPath: '/baubeschreibung'
+      preLoaderRoute: typeof BaubeschreibungRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kontakt': {
+      id: '/kontakt'
+      path: '/kontakt'
+      fullPath: '/kontakt'
+      preLoaderRoute: typeof KontaktRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lage': {
+      id: '/lage'
+      path: '/lage'
+      fullPath: '/lage'
+      preLoaderRoute: typeof LageRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/rechner': {
+      id: '/rechner'
+      path: '/rechner'
+      fullPath: '/rechner'
+      preLoaderRoute: typeof RechnerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/visualisierungen': {
+      id: '/visualisierungen'
+      path: '/visualisierungen'
+      fullPath: '/visualisierungen'
+      preLoaderRoute: typeof VisualisierungenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/wohnungen': {
+      id: '/wohnungen'
+      path: '/wohnungen'
+      fullPath: '/wohnungen'
+      preLoaderRoute: typeof WohnungenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/wohnungen/$nr': {
+      id: '/wohnungen/$nr'
+      path: '/$nr'
+      fullPath: '/wohnungen/$nr'
+      preLoaderRoute: typeof WohnungenNrRouteImport
+      parentRoute: typeof WohnungenRoute
+    }
   }
 }
 
+interface WohnungenRouteChildren {
+  WohnungenNrRoute: typeof WohnungenNrRoute
+}
+
+const WohnungenRouteChildren: WohnungenRouteChildren = {
+  WohnungenNrRoute: WohnungenNrRoute,
+}
+
+const WohnungenRouteWithChildren = WohnungenRoute._addFileChildren(
+  WohnungenRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BaubeschreibungRoute: BaubeschreibungRoute,
+  KontaktRoute: KontaktRoute,
+  LageRoute: LageRoute,
+  RechnerRoute: RechnerRoute,
+  VisualisierungenRoute: VisualisierungenRoute,
+  WohnungenRoute: WohnungenRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
