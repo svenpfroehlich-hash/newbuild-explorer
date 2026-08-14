@@ -10,33 +10,62 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as RechnerRouteImport } from './routes/rechner'
+import { Route as WohnungenRouteImport } from './routes/wohnungen'
+import { Route as WohnungenNrRouteImport } from './routes/wohnungen.$nr'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RechnerRoute = RechnerRouteImport.update({
+  id: '/rechner',
+  path: '/rechner',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WohnungenRoute = WohnungenRouteImport.update({
+  id: '/wohnungen',
+  path: '/wohnungen',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WohnungenNrRoute = WohnungenNrRouteImport.update({
+  id: '/$nr',
+  path: '/$nr',
+  getParentRoute: () => WohnungenRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/rechner': typeof RechnerRoute
+  '/wohnungen': typeof WohnungenRouteWithChildren
+  '/wohnungen/$nr': typeof WohnungenNrRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/rechner': typeof RechnerRoute
+  '/wohnungen': typeof WohnungenRouteWithChildren
+  '/wohnungen/$nr': typeof WohnungenNrRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/rechner': typeof RechnerRoute
+  '/wohnungen': typeof WohnungenRouteWithChildren
+  '/wohnungen/$nr': typeof WohnungenNrRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/rechner' | '/wohnungen' | '/wohnungen/$nr'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/rechner' | '/wohnungen' | '/wohnungen/$nr'
+  id: '__root__' | '/' | '/rechner' | '/wohnungen' | '/wohnungen/$nr'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  RechnerRoute: typeof RechnerRoute
+  WohnungenRoute: typeof WohnungenRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +77,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/rechner': {
+      id: '/rechner'
+      path: '/rechner'
+      fullPath: '/rechner'
+      preLoaderRoute: typeof RechnerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/wohnungen': {
+      id: '/wohnungen'
+      path: '/wohnungen'
+      fullPath: '/wohnungen'
+      preLoaderRoute: typeof WohnungenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/wohnungen/$nr': {
+      id: '/wohnungen/$nr'
+      path: '/$nr'
+      fullPath: '/wohnungen/$nr'
+      preLoaderRoute: typeof WohnungenNrRouteImport
+      parentRoute: typeof WohnungenRoute
+    }
   }
 }
 
+interface WohnungenRouteChildren {
+  WohnungenNrRoute: typeof WohnungenNrRoute
+}
+
+const WohnungenRouteChildren: WohnungenRouteChildren = {
+  WohnungenNrRoute: WohnungenNrRoute,
+}
+
+const WohnungenRouteWithChildren = WohnungenRoute._addFileChildren(
+  WohnungenRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  RechnerRoute: RechnerRoute,
+  WohnungenRoute: WohnungenRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
