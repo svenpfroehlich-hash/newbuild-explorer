@@ -91,6 +91,7 @@ export function Calculator({ initialUnit, compact }: Props) {
 
   const isInvestor = mode === "anleger";
   const isSurplus = isInvestor && result.monthlyBurden < 0;
+  const isSurplusPreTax = isInvestor && result.preTaxMonthlyBurden < 0;
 
   return (
     <div className="grid gap-8 lg:grid-cols-[1fr_1.05fr]">
@@ -180,8 +181,32 @@ export function Calculator({ initialUnit, compact }: Props) {
       {/* Ergebnis */}
       <div className="space-y-5">
         <div className="surface-ink p-6">
+          {isInvestor && (
+            <div className="mb-5 grid grid-cols-2 gap-4 border-b border-white/10 pb-5">
+              <div>
+                <p className="eyebrow text-xs opacity-70">
+                  Vor Steuer · {isSurplusPreTax ? "Überdeckung" : "Unterdeckung"}
+                </p>
+                <p className={`mt-1 font-display text-2xl ${isSurplusPreTax ? "text-brass" : ""}`}>
+                  {isSurplusPreTax ? "+" : ""}
+                  {eur(Math.abs(result.preTaxMonthlyBurden))}
+                </p>
+              </div>
+              <div>
+                <p className="eyebrow text-xs opacity-70">
+                  Nach Steuer · {isSurplus ? "Überdeckung" : "Unterdeckung"}
+                </p>
+                <p className={`mt-1 font-display text-2xl ${isSurplus ? "text-brass" : ""}`}>
+                  {isSurplus ? "+" : ""}
+                  {eur(Math.abs(result.monthlyBurden))}
+                </p>
+              </div>
+            </div>
+          )}
           <p className="eyebrow">
-            {isInvestor ? (isSurplus ? "Monatliche Überdeckung" : "Monatliche Unterdeckung") : "Monatliche Rate"}
+            {isInvestor
+              ? `${isSurplus ? "Monatliche Überdeckung" : "Monatliche Unterdeckung"} (nach Steuer)`
+              : "Monatliche Rate"}
           </p>
           <p className={`mt-2 font-display text-5xl ${isSurplus ? "text-brass" : ""}`}>
             {isSurplus ? "+" : ""}
