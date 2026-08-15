@@ -86,10 +86,18 @@ export function calculate(input: FinanceInput) {
 
   const taxSaving10 = rows.reduce((s, r) => s + r.taxSaving, 0);
   const y1 = rows[0]!;
-  const monthlyBurden =
+
+  // Monatliche Belastung vor Steuer: reine Zahlungsstrom-Sicht
+  // (Annuität + Hausgeld + Verwaltung − Mieteinnahmen), ohne den Steuereffekt aus Jahr 1.
+  const preTaxMonthlyBurden =
     input.mode === "anleger"
-      ? annuity + admin / 12 + hausgeld / 12 - rentYear / 12 - y1.taxSaving / 12
+      ? annuity + admin / 12 + hausgeld / 12 - rentYear / 12
       : annuity + hausgeld / 12;
+
+  // Monatliche Belastung nach Steuer: bereinigt um die Steuerersparnis aus Jahr 1
+  // (nur für Kapitalanleger relevant, Eigennutzer hat keinen steuerlichen Effekt).
+  const monthlyBurden =
+    input.mode === "anleger" ? preTaxMonthlyBurden - y1.taxSaving / 12 : preTaxMonthlyBurden;
 
   return {
     purchase,
@@ -104,6 +112,7 @@ export function calculate(input: FinanceInput) {
     hausgeld,
     rows,
     taxSaving10,
+    preTaxMonthlyBurden,
     monthlyBurden,
     grossYield: rentYear > 0 ? (rentYear / purchase) * 100 : 0,
     multiplier: rentYear > 0 ? purchase / rentYear : 0,
