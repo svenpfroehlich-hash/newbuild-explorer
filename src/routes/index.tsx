@@ -32,7 +32,7 @@ function Home() {
   return (
     <div>
       <section className="relative">
-        <img src={media.hero} alt="Visualisierung Rems Living, Böhmerwaldstraße 8" className="h-[70vh] w-full object-cover" />
+                <video className="h-[70vh] w-full object-cover" src="/video/hero-timelapse.mp4" autoPlay muted loop playsInline aria-label="Zeitraffer-Animation: Bauentstehung Rems Living, Böhmerwaldstraße 8" />
         <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/35 to-ink/10" />
         <div className="absolute inset-0 mx-auto flex max-w-6xl flex-col justify-end px-5 pb-14 text-white">
           <p className="eyebrow">{project.city} · {project.facts.standard}</p>
