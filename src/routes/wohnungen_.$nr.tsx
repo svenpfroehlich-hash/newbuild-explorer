@@ -2,9 +2,12 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { getUnit, units } from "@/data/units";
 import { eur, num } from "@/lib/finance";
 import { media } from "@/data/media";
+import { project } from "@/data/project";
 import { Calculator } from "@/components/Calculator";
+import { StatusBadge } from "@/components/StatusBadge";
+import { MessageCircle } from "lucide-react";
 
-export const Route = createFileRoute("/wohnungen/$nr")({
+export const Route = createFileRoute("/wohnungen_/$nr")({
   loader: ({ params }) => {
     const unit = getUnit(params.nr);
     if (!unit) throw notFound();
@@ -49,6 +52,15 @@ function UnitDetail() {
   const prev = units[idx - 1];
   const next = units[idx + 1];
 
+  const similar = units
+    .filter((u) => u.nr !== unit.nr && u.rooms === unit.rooms)
+    .sort((a, b) => {
+      // Freie Einheiten zuerst, dann nach Preisnähe zur aktuellen Wohnung sortieren.
+      if (a.status !== b.status) return a.status === "frei" ? -1 : b.status === "frei" ? 1 : 0;
+      return Math.abs(a.price - unit.price) - Math.abs(b.price - unit.price);
+    })
+    .slice(0, 3);
+
   const outdoorImage =
     unit.outdoor === "Terrasse" || unit.outdoor === "Dachterrasse"
       ? media.interior[4]!
@@ -66,9 +78,38 @@ function UnitDetail() {
           <h1 className="mt-3 font-display text-4xl md:text-5xl">Wohnung {unit.nr}</h1>
         </div>
         <div className="text-right">
-          <p className="font-display text-4xl">{eur(unit.price)}</p>
+          <StatusBadge status={unit.status} className="justify-end" />
+          <p className="mt-2 font-display text-4xl">{eur(unit.price)}</p>
           <p className="text-sm text-muted-foreground">{eur(unit.pricePerSqm)} pro m²</p>
         </div>
+      </div>
+
+      {unit.status !== "frei" && (
+        <div className="mt-6 border border-amber-200 bg-amber-50 px-5 py-4 text-sm text-amber-900">
+          {unit.status === "reserviert"
+            ? "Diese Wohnung ist aktuell reserviert. Bei Interesse tragen wir Sie gerne unverbindlich auf die Warteliste ein."
+            : "Diese Wohnung ist bereits verkauft. Schauen Sie sich gerne die ähnlichen Einheiten weiter unten an."}
+        </div>
+      )}
+
+      <div className="mt-6 flex flex-wrap gap-3">
+        <a
+          href={`https://wa.me/${project.contact.phone.replace(/[^\d]/g, "")}?text=${encodeURIComponent(
+            `Hallo, ich interessiere mich für Wohnung ${unit.nr} bei Rems Living.`,
+          )}`}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex items-center gap-2 border border-brass px-5 py-2.5 text-sm text-brass hover:bg-brass hover:text-primary-foreground"
+        >
+          <MessageCircle className="size-4" strokeWidth={1.75} />
+          Per WhatsApp anfragen
+        </a>
+        <a
+          href={project.contact.phoneHref}
+          className="inline-flex items-center gap-2 border border-border px-5 py-2.5 text-sm hover:bg-secondary"
+        >
+          {project.contact.phone} anrufen
+        </a>
       </div>
 
       <div className="mt-10 grid gap-4 sm:grid-cols-4">
@@ -136,6 +177,33 @@ function UnitDetail() {
           <Calculator initialUnit={unit} compact />
         </div>
       </div>
+
+      {similar.length > 0 && (
+        <div className="mt-16">
+          <p className="eyebrow">{unit.status === "frei" ? "Das könnte auch passen" : "Ähnliche Wohnungen"}</p>
+          <h2 className="mt-3 font-display text-3xl">Vergleichbare Einheiten</h2>
+          <div className="mt-6 grid gap-4 sm:grid-cols-3">
+            {similar.map((s) => (
+              <Link
+                key={s.nr}
+                to="/wohnungen/$nr"
+                params={{ nr: s.slug }}
+                className="block border border-border bg-card p-5 shadow-soft transition-colors hover:border-brass"
+              >
+                <div className="flex items-center justify-between">
+                  <p className="font-display text-2xl">Wohnung {s.nr}</p>
+                  <StatusBadge status={s.status} />
+                </div>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  {s.house} · {s.floor} · {s.type.label}
+                </p>
+                <p className="mt-3 font-medium">{eur(s.price)}</p>
+                <p className="text-xs text-muted-foreground">{num(s.area)} m² · {s.outdoor}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
 
       <div className="mt-16 flex justify-between border-t border-border pt-6 text-sm">
         {prev ? (

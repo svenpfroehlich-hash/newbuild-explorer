@@ -261,6 +261,10 @@ const prices: Record<number, number> = {
   42: 390893, 43: 385960, 44: 385960, 45: 390893,
 };
 
+// Verfügbarkeit pflegen: "frei" | "reserviert" | "verkauft". Standard ist "frei" —
+// bitte hier den tatsächlichen Vertriebsstand eintragen, sobald sich der Status ändert.
+export const unitStatus: Record<number, "frei" | "reserviert" | "verkauft"> = {};
+
 type FloorDef = { house: "Haus I" | "Haus II" | "Haus III"; floor: string; from: number; to: number };
 
 const floorPlan: FloorDef[] = [
@@ -289,6 +293,7 @@ export type Unit = {
   pricePerSqm: number;
   outdoor: "Terrasse" | "Balkon" | "Dachterrasse";
   type: UnitType;
+  status: "frei" | "reserviert" | "verkauft";
 };
 
 function outdoorFor(floor: string): Unit["outdoor"] {
@@ -315,6 +320,7 @@ export const units: Unit[] = Object.keys(prices)
       pricePerSqm: price / type.area,
       outdoor: outdoorFor(def.floor),
       type,
+      status: unitStatus[nr] ?? "frei",
     };
   });
 

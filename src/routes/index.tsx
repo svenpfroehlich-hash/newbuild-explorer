@@ -3,6 +3,8 @@ import { highlights, project } from "@/data/project";
 import { media } from "@/data/media";
 import { units } from "@/data/units";
 import { eur, num } from "@/lib/finance";
+import { ExposeGate } from "@/components/ExposeGate";
+import { TrustFaq } from "@/components/TrustFaq";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -121,6 +123,22 @@ function Home() {
           ))}
         </div>
       </section>
+
+      <section className="mx-auto max-w-6xl px-5 py-10">
+        <div className="grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:items-center">
+          <div>
+            <p className="eyebrow">Für unterwegs</p>
+            <h2 className="mt-3 font-display text-4xl">Das ganze Exposé auf einen Blick</h2>
+            <p className="mt-4 text-muted-foreground">
+              Preise, Grundrisstypen, Highlights und alle Eckdaten als PDF — zum Weiterleiten, Ausdrucken
+              oder für die Bank.
+            </p>
+          </div>
+          <ExposeGate />
+        </div>
+      </section>
+
+      <TrustFaq />
 
       <section className="surface-ink mt-16">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-6 px-5 py-14">

@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { houses, units } from "@/data/units";
 import { eur, num } from "@/lib/finance";
+import { StatusBadge } from "@/components/StatusBadge";
 
 export const Route = createFileRoute("/wohnungen")({
   head: () => ({
@@ -103,6 +104,7 @@ function UnitsPage() {
               <th className="px-4 py-3">Außenbereich</th>
               <th className="px-4 py-3 text-right">Preis</th>
               <th className="px-4 py-3 text-right">€/m²</th>
+              <th className="px-4 py-3">Status</th>
               <th className="px-4 py-3" />
             </tr>
           </thead>
@@ -115,8 +117,11 @@ function UnitsPage() {
                 <td className="px-4 py-3 text-right">{u.rooms}</td>
                 <td className="px-4 py-3 text-right">{num(u.area)} m²</td>
                 <td className="px-4 py-3">{u.outdoor}</td>
-                <td className="px-4 py-3 text-right font-medium">{eur(u.price)}</td>
+                <td className={`px-4 py-3 text-right font-medium ${u.status === "verkauft" ? "text-muted-foreground line-through" : ""}`}>
+                  {eur(u.price)}
+                </td>
                 <td className="px-4 py-3 text-right text-muted-foreground">{eur(u.pricePerSqm)}</td>
+                <td className="px-4 py-3"><StatusBadge status={u.status} /></td>
                 <td className="px-4 py-3 text-right">
                   <Link to="/wohnungen/$nr" params={{ nr: u.slug }} className="text-brass hover:underline">
                     Details
