@@ -46,15 +46,60 @@ export const highlights = [
 ];
 
 export const employers = [
-  { name: "Robert Bosch Automotive Steering", staff: "ca. 5.000+ Beschäftigte", place: "Schwäbisch Gmünd" },
-  { name: "Weleda", staff: "ca. 1.000 Beschäftigte", place: "Schwäbisch Gmünd" },
-  { name: "Stiftung Haus Lindenhof", staff: "ca. 2.100 Beschäftigte", place: "Schwäbisch Gmünd" },
-  { name: "Barmer Ersatzkasse", staff: "ca. 800 Beschäftigte", place: "Schwäbisch Gmünd" },
-  { name: "Bausparkasse Schwäbisch Hall", staff: "ca. 3.600 Beschäftigte", place: "Schwäbisch Hall" },
-  { name: "Mercedes-Benz", staff: "ca. 44.000 Beschäftigte", place: "Stuttgart" },
-  { name: "Robert Bosch", staff: "ca. 15.000 Beschäftigte", place: "Stuttgart" },
-  { name: "Porsche", staff: "ca. 7.800 Beschäftigte", place: "Stuttgart-Zuffenhausen" },
-  { name: "LBBW", staff: "ca. 7.500 Beschäftigte", place: "Stuttgart" },
+  {
+    name: "Robert Bosch Automotive Steering",
+    staff: "ca. 5.000+ Beschäftigte",
+    place: "Schwäbisch Gmünd",
+    jobsUrl: "https://jobs.bosch.de/?filter=locations.cityState%3ASchw%C3%A4bisch+Gm%C3%BCnd_IN_+Baden-W%C3%BCrttemberg",
+  },
+  {
+    name: "Weleda",
+    staff: "ca. 1.000 Beschäftigte",
+    place: "Schwäbisch Gmünd",
+    jobsUrl: "https://www.weleda.de/weleda/ueber-uns/karriere",
+  },
+  {
+    name: "Stiftung Haus Lindenhof",
+    staff: "ca. 2.100 Beschäftigte",
+    place: "Schwäbisch Gmünd",
+    jobsUrl: "https://www.haus-lindenhof.de/karriere/stellenportal/",
+  },
+  {
+    name: "Barmer Ersatzkasse",
+    staff: "ca. 800 Beschäftigte",
+    place: "Schwäbisch Gmünd",
+    jobsUrl: "https://jobs.barmer.de/",
+  },
+  {
+    name: "Bausparkasse Schwäbisch Hall",
+    staff: "ca. 3.600 Beschäftigte",
+    place: "Schwäbisch Hall",
+    jobsUrl: "https://karriere.schwaebisch-hall.de/de",
+  },
+  {
+    name: "Mercedes-Benz",
+    staff: "ca. 44.000 Beschäftigte",
+    place: "Stuttgart",
+    jobsUrl: "https://jobs.mercedes-benz.com/de",
+  },
+  {
+    name: "Robert Bosch",
+    staff: "ca. 15.000 Beschäftigte",
+    place: "Stuttgart",
+    jobsUrl: "https://jobs.bosch.de/",
+  },
+  {
+    name: "Porsche",
+    staff: "ca. 7.800 Beschäftigte",
+    place: "Stuttgart-Zuffenhausen",
+    jobsUrl: "https://jobs.porsche.com/",
+  },
+  {
+    name: "LBBW",
+    staff: "ca. 7.500 Beschäftigte",
+    place: "Stuttgart",
+    jobsUrl: "https://www.lbbw.de/menschen/karriere/karriere-bei-der-lbbw/karriere_7wo376iug_d.html",
+  },
 ];
 
 export const microLocation = [

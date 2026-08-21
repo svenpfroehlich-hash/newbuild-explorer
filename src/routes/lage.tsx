@@ -13,6 +13,7 @@ import {
   Croissant,
   Dumbbell,
   MapPin,
+  ArrowUpRight,
 } from "lucide-react";
 import { employers, microLocation, project } from "@/data/project";
 import { media } from "@/data/media";
@@ -212,6 +213,17 @@ function LagePage() {
                   <div className="mt-2 h-1 w-full bg-accent">
                     <div className="h-1 bg-brass" style={{ width: `${pct}%` }} />
                   </div>
+                  {e.jobsUrl && (
+                    <a
+                      href={e.jobsUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="mt-2 inline-flex items-center gap-1 text-xs text-brass hover:underline"
+                    >
+                      Offene Stellen ansehen
+                      <ArrowUpRight className="size-3" strokeWidth={1.75} />
+                    </a>
+                  )}
                 </div>
               );
             })}
