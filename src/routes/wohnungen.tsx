@@ -1,10 +1,15 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { houses, units } from "@/data/units";
+import { houses, units as staticUnits } from "@/data/units";
 import { eur, num } from "@/lib/finance";
 import { StatusBadge } from "@/components/StatusBadge";
+import { getEffectiveUnits } from "@/lib/unit-status.server";
 
 export const Route = createFileRoute("/wohnungen")({
+  loader: async () => {
+    const units = await getEffectiveUnits().catch(() => staticUnits);
+    return { units };
+  },
   head: () => ({
     meta: [
       { title: "Wohnungsliste & Preisliste — Rems Living Schwäbisch Gmünd" },
@@ -21,6 +26,7 @@ export const Route = createFileRoute("/wohnungen")({
 });
 
 function UnitsPage() {
+  const { units } = Route.useLoaderData();
   const [house, setHouse] = useState<string>("alle");
   const [rooms, setRooms] = useState<string>("alle");
   const [maxPrice, setMaxPrice] = useState(540000);
@@ -36,7 +42,7 @@ function UnitsPage() {
     return [...list].sort((a, b) =>
       sort === "price" ? a.price - b.price : sort === "area" ? a.area - b.area : a.nr - b.nr,
     );
-  }, [house, rooms, maxPrice, sort]);
+  }, [units, house, rooms, maxPrice, sort]);
 
   return (
     <div className="mx-auto max-w-6xl px-5 py-16">

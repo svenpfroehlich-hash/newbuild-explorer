@@ -261,9 +261,28 @@ const prices: Record<number, number> = {
   42: 390893, 43: 385960, 44: 385960, 45: 390893,
 };
 
-// Verfügbarkeit pflegen: "frei" | "reserviert" | "verkauft". Standard ist "frei" —
-// bitte hier den tatsächlichen Vertriebsstand eintragen, sobald sich der Status ändert.
-export const unitStatus: Record<number, "frei" | "reserviert" | "verkauft"> = {};
+// Verfügbarkeit pflegen: "frei" | "reserviert" | "verkauft". Dies ist nur der
+// Startwert beim ersten Laden — echte Änderungen laufen ab jetzt über das
+// Verwaltungsportal (/verwaltung) und werden live in Netlify Blobs gespeichert,
+// ohne dass die Seite neu deployed werden muss.
+export const unitStatus: Record<number, "frei" | "reserviert" | "verkauft"> = {
+  // Haus III: alle Einheiten reserviert außer je einer 2- und 3-Zimmer-Wohnung
+  31: "reserviert",
+  32: "reserviert",
+  33: "reserviert",
+  34: "reserviert",
+  35: "reserviert",
+  36: "reserviert",
+  37: "reserviert",
+  38: "reserviert",
+  39: "reserviert",
+  40: "reserviert",
+  41: "reserviert",
+  43: "reserviert",
+  44: "reserviert",
+  45: "reserviert",
+  // 30 (3-Zimmer, Typ O) und 42 (2-Zimmer Penthouse, Typ Q) bleiben frei
+};
 
 type FloorDef = { house: "Haus I" | "Haus II" | "Haus III"; floor: string; from: number; to: number };
 

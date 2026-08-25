@@ -112,3 +112,52 @@ export const microLocation = [
   "Bäcker",
   "Fitnessstudio",
 ];
+
+// Quelle: "Wohnen an der Rems – Standort-Infoblatt", Stand 5. August 2026.
+// Basiert auf veröffentlichten Planungs- und Unternehmensangaben (Stadt Schwäbisch
+// Gmünd, Rems-Zeitung, Schwäbische Post, Gmünder Tagespost). Planungszahlen sind
+// keine Beschäftigungs- oder Fertigstellungsgarantie.
+export const economicStats = [
+  { value: "165+", label: "bezifferte neue Stellen (XXXLutz + Widmann)" },
+  { value: "bis 100", label: "Beschäftigungskapazität Careoss Süd" },
+  { value: "20+", label: "angekündigte Ausbildungsplätze" },
+  { value: "> 65 Mio. €", label: "quantifizierte Investitionen in der Region" },
+];
+
+export const economicDevelopments = [
+  {
+    name: "XXXLutz – neues Möbelhaus an der B29",
+    status: "Planung läuft, Baubeginn offen",
+    place: "östlich des Gaskessels",
+    fact: "ca. 150 Stellen · rund 20 Ausbildungsplätze · knapp 50 Mio. € Investition",
+    text: "Auf einem rund 55.000 m² großen Areal sind 28.000–30.000 m² Verkaufsfläche geplant. Die Stadt rechnet mit 150 Arbeitsplätzen, der Regionalverband stimmte im Juni 2026 zu.",
+  },
+  {
+    name: "Careoss Süd – Hightech-Zentrum für Karosserieschäden",
+    status: "Eröffnet am 15. Juni 2026",
+    place: "Industriegebiet Krähe",
+    fact: "über 15 Mio. € Investition · Kapazität bis 100 Beschäftigte",
+    text: "Der Neubau mit rund 4.500 m² Hallen-, 600 m² Büro- und 800 m² Technikfläche entstand in nur acht Monaten. Der Personalaufbau läuft schrittweise.",
+  },
+  {
+    name: "Autohaus Widmann – neuer Unternehmensstandort",
+    status: "Geplant, Zielhorizont 2028",
+    place: "Gewerbegebiet Benzfeld",
+    fact: "15+ neue technische und kaufmännische Stellen plus Ausbildungsplätze",
+    text: "Der Gemeinderat stimmte dem Grundstücksverkauf im April 2026 zu. Erweiterte Werkstatt- und Serviceflächen sollen zusätzliche Marken und Dienstleistungen ermöglichen.",
+  },
+  {
+    name: "LEICHT Küchen – Werk 2",
+    status: "Seit Oktober 2020 in Betrieb",
+    place: "Industriegebiet Gügling",
+    fact: "rund 100 Beschäftigte · rund 90 Mio. € Investition",
+    text: "Auf rund 80.000 m² Grundstücksfläche entstanden etwa 40.000 m² Hallenfläche — eine der größten realisierten Investitionen der jüngeren Standortentwicklung.",
+  },
+];
+
+export const bikeDestinations = [
+  { name: "Kaufland", info: "Hauptstraße 6 · Nahversorgung", km: "0,7 km", min: "3–4 Min." },
+  { name: "Stadtmitte", info: "Marktplatz · Einkaufen, Gastronomie", km: "4,5 km", min: "ca. 15 Min." },
+  { name: "FLEIGA", info: "Im Benzfeld 36 · bestehender Arbeitgeber", km: "0,8 km", min: "ca. 4 Min." },
+  { name: "LEICHT Werk 2", info: "Gügling · rund 100 Beschäftigte", km: "4,3 km", min: "ca. 17 Min." },
+];

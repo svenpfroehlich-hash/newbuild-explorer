@@ -14,8 +14,17 @@ import {
   Dumbbell,
   MapPin,
   ArrowUpRight,
+  TrendingUp,
+  Bike,
 } from "lucide-react";
-import { employers, microLocation, project } from "@/data/project";
+import {
+  employers,
+  microLocation,
+  project,
+  economicStats,
+  economicDevelopments,
+  bikeDestinations,
+} from "@/data/project";
 import { media } from "@/data/media";
 
 export const Route = createFileRoute("/lage")({
@@ -185,6 +194,67 @@ function LagePage() {
               </div>
             );
           })}
+        </div>
+      </section>
+
+      <section className="mt-16">
+        <p className="eyebrow">Standortentwicklung</p>
+        <h2 className="font-display text-3xl">Wirtschaftliche Neubauimpulse in der Nachbarschaft</h2>
+        <p className="mt-3 max-w-2xl text-sm text-muted-foreground">
+          Handel, Kfz-Service, Hightech-Reparatur und Produktion schaffen neue Arbeitsplätze im
+          Gmünder Osten und entlang der B29 — ein Signal für die Standortentwicklung rund um Rems
+          Living.
+        </p>
+
+        <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {economicStats.map((s) => (
+            <div key={s.label} className="border border-border bg-card p-5 shadow-soft">
+              <p className="font-display text-3xl text-brass">{s.value}</p>
+              <p className="mt-1 text-xs text-muted-foreground">{s.label}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-6 divide-y divide-border border border-border bg-card shadow-soft">
+          {economicDevelopments.map((d) => (
+            <div key={d.name} className="flex gap-4 px-5 py-4">
+              <TrendingUp className="mt-1 size-4 shrink-0 text-brass" strokeWidth={1.75} />
+              <div>
+                <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                  <p className="font-medium">{d.name}</p>
+                  <p className="text-xs uppercase tracking-wide text-brass">{d.status}</p>
+                </div>
+                <p className="mt-0.5 text-xs text-muted-foreground">{d.place} · {d.fact}</p>
+                <p className="mt-2 text-sm text-muted-foreground">{d.text}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <p className="mt-3 text-xs text-muted-foreground">
+          Quellen: Stadt Schwäbisch Gmünd, Rems-Zeitung, Schwäbische Post, Gmünder Tagespost (Stand
+          5. August 2026). Planungszahlen sind keine Beschäftigungs- oder Fertigstellungsgarantie.
+        </p>
+      </section>
+
+      <section className="mt-16">
+        <p className="eyebrow">Alltag schnell per Rad</p>
+        <h2 className="font-display text-3xl">Mit dem Fahrrad unterwegs</h2>
+        <div className="mt-6 grid gap-3 sm:grid-cols-2">
+          {bikeDestinations.map((b) => (
+            <div key={b.name} className="flex items-center gap-4 border border-border bg-card p-4 shadow-soft">
+              <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-accent text-brass">
+                <Bike className="size-4" strokeWidth={1.75} />
+              </span>
+              <div className="flex-1">
+                <p className="font-medium">{b.name}</p>
+                <p className="text-xs text-muted-foreground">{b.info}</p>
+              </div>
+              <div className="text-right">
+                <p className="font-display text-xl">{b.min}</p>
+                <p className="text-xs text-muted-foreground">{b.km}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 

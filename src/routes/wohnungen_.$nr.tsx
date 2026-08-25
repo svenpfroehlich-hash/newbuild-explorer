@@ -1,17 +1,20 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { getUnit, units } from "@/data/units";
+import { units as staticUnits } from "@/data/units";
 import { eur, num } from "@/lib/finance";
 import { media } from "@/data/media";
 import { project } from "@/data/project";
 import { Calculator } from "@/components/Calculator";
 import { StatusBadge } from "@/components/StatusBadge";
+import { LiveViewers } from "@/components/LiveViewers";
 import { MessageCircle } from "lucide-react";
+import { getEffectiveUnits } from "@/lib/unit-status.server";
 
 export const Route = createFileRoute("/wohnungen_/$nr")({
-  loader: ({ params }) => {
-    const unit = getUnit(params.nr);
+  loader: async ({ params }) => {
+    const units = await getEffectiveUnits().catch(() => staticUnits);
+    const unit = units.find((u) => u.slug === params.nr);
     if (!unit) throw notFound();
-    return { unit };
+    return { unit, units };
   },
   head: ({ loaderData }) => {
     if (!loaderData) {
@@ -47,7 +50,7 @@ function UnitNotFound() {
 }
 
 function UnitDetail() {
-  const { unit } = Route.useLoaderData();
+  const { unit, units } = Route.useLoaderData();
   const idx = units.findIndex((u) => u.nr === unit.nr);
   const prev = units[idx - 1];
   const next = units[idx + 1];
@@ -83,6 +86,8 @@ function UnitDetail() {
           <p className="text-sm text-muted-foreground">{eur(unit.pricePerSqm)} pro m²</p>
         </div>
       </div>
+
+      <LiveViewers unitNr={unit.nr} />
 
       {unit.status !== "frei" && (
         <div className="mt-6 border border-amber-200 bg-amber-50 px-5 py-4 text-sm text-amber-900">
