@@ -6,7 +6,7 @@ import { units as baseUnits, type Unit } from "@/data/units";
 // durch den Eigentümer/Vertrieb ausreichend, aber KEIN Ersatz für echte
 // Benutzerkonten, falls mehrere Personen mit unterschiedlichen Rechten
 // zugreifen sollen sollen. Der Code lässt sich hier jederzeit ändern.
-const ADMIN_PASSCODE = "RemsLiving2027";
+const ADMIN_PASSCODE = "TOfMZAHwOXwa2QoT";
 
 async function getStatusStore() {
   const { getStore } = await import("@netlify/blobs");

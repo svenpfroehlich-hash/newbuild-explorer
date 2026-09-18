@@ -26,6 +26,7 @@ import {
   bikeDestinations,
 } from "@/data/project";
 import { media } from "@/data/media";
+import { ConsentMap } from "@/components/ConsentMap";
 
 export const Route = createFileRoute("/lage")({
   head: () => ({
@@ -120,14 +121,8 @@ function LagePage() {
             In Google Maps öffnen
           </a>
         </div>
-        <div className="relative h-[440px] w-full grayscale-[15%] contrast-[1.05] saturate-[0.9]">
-          <iframe
-            title="Lage Rems Living"
-            src={`https://www.google.com/maps?q=${mapQuery}&z=15&output=embed`}
-            className="h-full w-full border-0"
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          />
+        <div className="relative grayscale-[15%] contrast-[1.05] saturate-[0.9]">
+          <ConsentMap query={mapQuery} />
         </div>
       </div>
 

@@ -35,6 +35,7 @@ export function SiteFooter() {
       </div>
       <div className="mx-auto max-w-6xl border-t border-white/10 px-5 py-8 text-xs opacity-55">
         <p>Ein Projekt von {project.developer}. {project.disclaimer}</p>
+        <div className="mt-4 flex gap-4"><Link to="/impressum" className="hover:opacity-100">Impressum</Link><Link to="/datenschutz" className="hover:opacity-100">Datenschutz</Link></div>
       </div>
     </footer>
   );
