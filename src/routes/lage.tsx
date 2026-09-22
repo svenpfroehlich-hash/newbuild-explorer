@@ -26,7 +26,6 @@ import {
   bikeDestinations,
 } from "@/data/project";
 import { media } from "@/data/media";
-import { ConsentMap } from "@/components/ConsentMap";
 
 export const Route = createFileRoute("/lage")({
   head: () => ({
@@ -60,11 +59,11 @@ const microIcons: Record<string, typeof ShoppingBasket> = {
 type RouteStop = { label: string; value: string; minutes: number; mode: "car" | "train" | "plane" };
 
 const routeStops: RouteStop[] = [
-  { label: "B29 Auffahrt", value: "5 Min.", minutes: 5, mode: "car" },
-  { label: "Innenstadt Schwäbisch Gmünd", value: "8 Min.", minutes: 8, mode: "car" },
-  { label: "Bahnhof Schwäbisch Gmünd", value: "10 Min.", minutes: 10, mode: "train" },
-  { label: "Aalen", value: "25 Min.", minutes: 25, mode: "car" },
-  { label: "Stuttgart", value: "50 Min.", minutes: 50, mode: "car" },
+  { label: "B29 Auffahrt", value: "3 Min.", minutes: 3, mode: "car" },
+  { label: "Innenstadt Schwäbisch Gmünd", value: "5 Min.", minutes: 5, mode: "car" },
+  { label: "Bahnhof Schwäbisch Gmünd", value: "8 Min.", minutes: 8, mode: "train" },
+  { label: "Aalen", value: "20 Min.", minutes: 20, mode: "car" },
+  { label: "Stuttgart", value: "35 Min.", minutes: 35, mode: "car" },
   { label: "Flughafen Stuttgart", value: "60 Min.", minutes: 60, mode: "plane" },
 ];
 
@@ -92,7 +91,7 @@ function LagePage() {
         </div>
         <div className="flex gap-6 border-t border-border pt-6 lg:justify-end lg:border-t-0 lg:border-l lg:pl-8 lg:pt-0">
           <div>
-            <p className="font-display text-4xl text-brass">50<span className="text-xl">′</span></p>
+            <p className="font-display text-4xl text-brass">35<span className="text-xl">′</span></p>
             <p className="mt-1 text-xs text-muted-foreground">nach Stuttgart</p>
           </div>
           <div>
@@ -100,7 +99,7 @@ function LagePage() {
             <p className="mt-1 text-xs text-muted-foreground">Jobs bei Bosch, Mercedes & Porsche</p>
           </div>
           <div>
-            <p className="font-display text-4xl text-brass">5<span className="text-xl">′</span></p>
+            <p className="font-display text-4xl text-brass">3<span className="text-xl">′</span></p>
             <p className="mt-1 text-xs text-muted-foreground">bis zur B29</p>
           </div>
         </div>
@@ -121,8 +120,14 @@ function LagePage() {
             In Google Maps öffnen
           </a>
         </div>
-        <div className="relative grayscale-[15%] contrast-[1.05] saturate-[0.9]">
-          <ConsentMap query={mapQuery} />
+        <div className="relative h-[440px] w-full grayscale-[15%] contrast-[1.05] saturate-[0.9]">
+          <iframe
+            title="Lage Rems Living"
+            src={`https://www.google.com/maps?q=${mapQuery}&z=15&output=embed`}
+            className="h-full w-full border-0"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
         </div>
       </div>
 
