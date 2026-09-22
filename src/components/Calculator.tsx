@@ -182,7 +182,7 @@ export function Calculator({ initialUnit, compact }: Props) {
       <div className="space-y-5">
         <div className="surface-ink p-6">
           {isInvestor && (
-            <div className="mb-5 grid grid-cols-2 gap-4 border-b border-white/10 pb-5">
+            <div className="mb-5 grid grid-cols-1 gap-4 border-b border-white/10 pb-5 sm:grid-cols-2">
               <div>
                 <p className="eyebrow text-xs opacity-70">
                   Vor Steuer · {isSurplusPreTax ? "Überdeckung" : "Unterdeckung"}
