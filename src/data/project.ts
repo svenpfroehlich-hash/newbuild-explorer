@@ -157,7 +157,7 @@ export const economicDevelopments = [
 
 export const bikeDestinations = [
   { name: "Kaufland", info: "Hauptstraße 6 · Nahversorgung", km: "0,7 km", min: "3–4 Min." },
-  { name: "Stadtmitte", info: "Marktplatz · Einkaufen, Gastronomie", km: "4,5 km", min: "ca. 15 Min." },
+  { name: "Stadtmitte", info: "Marktplatz · Einkaufen, Gastronomie", km: "4,5 km", min: "10 Min." },
   { name: "FLEIGA", info: "Im Benzfeld 36 · bestehender Arbeitgeber", km: "0,8 km", min: "ca. 4 Min." },
   { name: "LEICHT Werk 2", info: "Gügling · rund 100 Beschäftigte", km: "4,3 km", min: "ca. 17 Min." },
 ];
