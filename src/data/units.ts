@@ -266,30 +266,20 @@ const prices: Record<number, number> = {
 // Verwaltungsportal (/verwaltung) und werden live in Netlify Blobs gespeichert,
 // ohne dass die Seite neu deployed werden muss.
 export const unitStatus: Record<number, "frei" | "reserviert" | "verkauft"> = {
-  // Haus I: vereinzelte Reservierungen über die Etagen verteilt
+  // Haus I: beliebtestes Haus, überdurchschnittlich viele Reservierungen
   2: "reserviert",
+  4: "reserviert",
   6: "reserviert",
+  8: "reserviert",
   10: "reserviert",
   // Haus II: vereinzelte Reservierungen über die Etagen verteilt
   13: "reserviert",
   19: "reserviert",
   28: "reserviert",
-  // Haus III: alle Einheiten reserviert außer je einer 2- und 3-Zimmer-Wohnung
+  // Haus III: vereinzelte Reservierungen über die Etagen verteilt
   31: "reserviert",
-  32: "reserviert",
-  33: "reserviert",
-  34: "reserviert",
   35: "reserviert",
-  36: "reserviert",
-  37: "reserviert",
-  38: "reserviert",
-  39: "reserviert",
-  40: "reserviert",
   41: "reserviert",
-  43: "reserviert",
-  44: "reserviert",
-  45: "reserviert",
-  // 30 (3-Zimmer, Typ O) und 42 (2-Zimmer Penthouse, Typ Q) bleiben frei
 };
 
 type FloorDef = { house: "Haus I" | "Haus II" | "Haus III"; floor: string; from: number; to: number };
