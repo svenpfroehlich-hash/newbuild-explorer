@@ -266,6 +266,14 @@ const prices: Record<number, number> = {
 // Verwaltungsportal (/verwaltung) und werden live in Netlify Blobs gespeichert,
 // ohne dass die Seite neu deployed werden muss.
 export const unitStatus: Record<number, "frei" | "reserviert" | "verkauft"> = {
+  // Haus I: vereinzelte Reservierungen über die Etagen verteilt
+  2: "reserviert",
+  6: "reserviert",
+  10: "reserviert",
+  // Haus II: vereinzelte Reservierungen über die Etagen verteilt
+  13: "reserviert",
+  19: "reserviert",
+  28: "reserviert",
   // Haus III: alle Einheiten reserviert außer je einer 2- und 3-Zimmer-Wohnung
   31: "reserviert",
   32: "reserviert",
