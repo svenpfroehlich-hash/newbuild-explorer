@@ -26,7 +26,7 @@ export const project = {
 export const highlights = [
   "Massivbauweise, hochwertige Qualität",
   "Zeitgemäße, durchdachte Grundrisse",
-  "Jährlich bis zu 10 % steuerlich abschreibbar",
+  "Jährlich 10 % steuerlich abschreibbar",
   "Zinsgünstige KfW-Förderkredite von 150.000 € pro Einheit",
   "Nach 10 Jahren steuerfreier Verkauf möglich",
   "Ruhig gelegen, mit schneller Anbindung an die B29",
