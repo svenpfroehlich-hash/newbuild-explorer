@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { project } from "@/data/project";
 import { media } from "@/data/media";
+import panoramaQuerschnitt from "@/assets/panorama-querschnitt.jpg";
 
 export const Route = createFileRoute("/baubeschreibung")({
   head: () => ({
@@ -97,9 +98,16 @@ export function BaubeschreibungPage() {
       </p>
 
       <img
+        src={panoramaQuerschnitt}
+        alt="Rems Living im Querschnitt: alle drei Häuser mit Tiefgarage"
+        className="mt-10 w-full border border-border bg-white"
+        loading="lazy"
+      />
+
+      <img
         src={media.exterior[5]!.src}
         alt="Ansicht West des Neubauprojekts"
-        className="mt-10 w-full border border-border bg-white"
+        className="mt-6 w-full border border-border bg-white"
         loading="lazy"
       />
 
