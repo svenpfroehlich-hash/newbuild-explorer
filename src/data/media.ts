@@ -1,10 +1,4 @@
 import renderHero from "@/assets/render-hero.jpg.asset.json";
-import render2 from "@/assets/render-2.jpg.asset.json";
-import render3 from "@/assets/render-3.jpg.asset.json";
-import render4 from "@/assets/render-4.jpg.asset.json";
-import render5 from "@/assets/render-5.jpg.asset.json";
-import ansichtWest from "@/assets/ansicht-west.jpg.asset.json";
-import hall from "@/assets/hall.jpg.asset.json";
 import lageKarte from "@/assets/lage-karte.jpg.asset.json";
 import planUg from "@/assets/plan-ug.jpg.asset.json";
 import gmuend1 from "@/assets/gmuend-1.jpg.asset.json";
@@ -17,17 +11,28 @@ import visBad from "@/assets/vis-bad.jpg";
 import visKueche from "@/assets/vis-kueche.jpg";
 import visBalkon from "@/assets/vis-balkon.jpg";
 import visTerrasse from "@/assets/vis-terrasse.jpg";
+import haus1Front from "@/assets/haus1-frontansicht.jpg";
+import haus2Front from "@/assets/haus2-frontansicht.jpg";
+import haus1Rueck from "@/assets/haus1-rueckseite.jpg";
+import haus2Rueck from "@/assets/haus2-rueckseite.jpg";
+import haus3Rueck from "@/assets/haus3-rueckseite.jpg";
+import haus2Seite from "@/assets/haus2-seitenansicht.jpg";
+import haus3Seite from "@/assets/haus3-seitenansicht.jpg";
+import haus1AnsichtA from "@/assets/haus1-ansicht-a.jpg";
+import haus1AnsichtB from "@/assets/haus1-ansicht-b.jpg";
 
 export const media = {
   hero: renderHero.url,
   exterior: [
-    { src: renderHero.url, title: "Gesamtansicht", text: "Drei Häuser mit klarer Architektur und begrünten Freiflächen." },
-    { src: render2.url, title: "Straßenansicht", text: "Ruhige Lage in der Böhmerwaldstraße 8." },
-    { src: render3.url, title: "Innenhof", text: "Gemeinschaftsflächen mit Kinderspielplatz." },
-    { src: render4.url, title: "Balkone & Loggien", text: "Jede Wohnung mit privatem Außenbereich." },
-    { src: render5.url, title: "Abendstimmung", text: "Warmes Licht, hochwertige Materialien." },
-    { src: ansichtWest.url, title: "Ansicht West", text: "Architektenzeichnung der Westfassade." },
-    { src: hall.url, title: "Eingangsbereich", text: "Barrierefreier Zugang, Aufzug in jedem Haus." },
+    { src: haus1Front, title: "Frontansicht Haus I", text: "Klare Linien, weiße Putzfassade, private Balkone mit Glasbrüstung." },
+    { src: haus2Front, title: "Frontansicht Haus II", text: "Großzügige Fensterfronten und begrünte Freiflächen." },
+    { src: haus1Rueck, title: "Rückseite Haus I", text: "Balkone in allen Obergeschossen, Dachterrasse im Penthouse." },
+    { src: haus2Rueck, title: "Rückseite Haus II", text: "Ruhige Gartenseite mit privaten Außenbereichen." },
+    { src: haus3Rueck, title: "Rückseite Haus III", text: "Loggien und Balkone zur Grünfläche ausgerichtet." },
+    { src: haus2Seite, title: "Seitenansicht Haus II", text: "Architektonisches Detail der Fassadengliederung." },
+    { src: haus3Seite, title: "Seitenansicht Haus III", text: "Zurückgesetzte Balkone, ruhige Kubatur." },
+    { src: haus1AnsichtA, title: "Haus I, Gesamtansicht", text: "Drei Etagen mit Balkonen und begrüntem Dach." },
+    { src: haus1AnsichtB, title: "Haus I, Detailansicht", text: "Blick auf Balkone und Grünflächen." },
   ],
   interior: [
     { src: visWohnen, title: "Wohnen & Essen", text: "Offener Wohn-Ess-Bereich, Eichenparkett, 2,63 m Deckenhöhe, Fußbodenheizung." },
