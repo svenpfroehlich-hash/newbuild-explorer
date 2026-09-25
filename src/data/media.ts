@@ -11,6 +11,7 @@ import visBad from "@/assets/vis-bad.jpg";
 import visKueche from "@/assets/vis-kueche.jpg";
 import visBalkon from "@/assets/vis-balkon.jpg";
 import visTerrasse from "@/assets/vis-terrasse.jpg";
+import dachterrassePenthouse from "@/assets/dachterrasse-penthouse.jpg";
 import haus1Front from "@/assets/haus1-frontansicht.jpg";
 import haus2Front from "@/assets/haus2-frontansicht.jpg";
 import haus1Rueck from "@/assets/haus1-rueckseite.jpg";
@@ -41,6 +42,11 @@ export const media = {
     { src: visBalkon, title: "Balkon", text: "Privater Balkon in den Obergeschossen — Süd- und Westausrichtung." },
     { src: visTerrasse, title: "Terrasse & Dachterrasse", text: "Erdgeschoss mit Gartenanteil, Dachgeschoss mit großzügiger Dachterrasse." },
   ],
+  outdoorByType: {
+    Balkon: { src: visBalkon, title: "Balkon", text: "Privater Balkon in den Obergeschossen — Süd- und Westausrichtung." },
+    Terrasse: { src: visTerrasse, title: "Terrasse", text: "Erdgeschoss mit privater Terrasse und Gartenanteil." },
+    Dachterrasse: { src: dachterrassePenthouse, title: "Dachterrasse", text: "Penthouse mit großzügiger Dachterrasse und Rundumblick." },
+  },
   location: {
     map: lageKarte.url,
     stuttgart: stuttgart.url,
