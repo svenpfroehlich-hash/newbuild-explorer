@@ -2,7 +2,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { units as staticUnits } from "@/data/units";
 import { eur, num } from "@/lib/finance";
 import { media } from "@/data/media";
-import { project } from "@/data/project";
+import { project } from "@/ data/project";
 import { Calculator } from "@/components/Calculator";
 import { StatusBadge } from "@/components/StatusBadge";
 import { LiveViewers } from "@/components/LiveViewers";
