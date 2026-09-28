@@ -16,7 +16,7 @@ export function ExposeGate() {
     e.preventDefault();
     setStatus("loading");
     try {
-      await fetch("/", {
+      await fetch("/netlify-forms.html", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: encode({ "form-name": "expose-anfrage", name, email }),
