@@ -95,7 +95,7 @@ function UnitDetail() {
       )}
 
       <div className="mt-6 flex flex-wrap gap-3">
-        
+        <a
           href={`https://wa.me/${project.contact.phone.replace(/[^\d]/g, "")}?text=${encodeURIComponent(
             `Hallo, ich interessiere mich für Wohnung ${unit.nr} bei Rems Living.`,
           )}`}
@@ -106,7 +106,7 @@ function UnitDetail() {
           <MessageCircle className="size-4" strokeWidth={1.75} />
           Per WhatsApp anfragen
         </a>
-        
+        <a
           href={project.contact.phoneHref}
           className="inline-flex items-center gap-2 border border-border px-5 py-2.5 text-sm hover:bg-secondary"
         >
