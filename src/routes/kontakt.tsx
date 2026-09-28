@@ -77,7 +77,7 @@ function KontaktPage() {
             formData.forEach((value, key) => {
               payload[key] = String(value);
             });
-            fetch("/", {
+            fetch("/netlify-forms.html", {
               method: "POST",
               headers: { "Content-Type": "application/x-www-form-urlencoded" },
               body: encodeFormData(payload),
