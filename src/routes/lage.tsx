@@ -81,7 +81,7 @@ function LagePage() {
         <div>
           <p className="eyebrow">Mikro- & Makrolage</p>
           <h1 className="mt-3 font-display text-4xl leading-[1.05] md:text-5xl">
-            Ruhig wohnen, in 50&nbsp;Minuten mitten im stärksten Arbeitsmarkt Baden-Württembergs
+            Ruhig wohnen, in 35&nbsp;Minuten mitten im stärksten Arbeitsmarkt Baden-Württembergs
           </h1>
           <p className="mt-5 max-w-xl text-muted-foreground">
             {project.street}, {project.city} — eine gewachsene, ruhige Nachbarschaft mit vollständiger
