@@ -10,7 +10,7 @@ import visWohnen from "@/assets/vis-wohnen.jpg";
 import visBad from "@/assets/vis-bad.jpg";
 import visKueche from "@/assets/vis-kueche.jpg";
 import visBalkon from "@/assets/vis-balkon.jpg";
-import visTerrasse from "@/assets/vis-terrasse.jpg";
+import visTerrasse from "@/assets/image-gen-1(20260925-142851).png";
 import dachterrassePenthouse from "@/assets/dachterrasse-penthouse.jpg";
 import haus1Front from "@/assets/haus1-frontansicht.jpg";
 import haus2Front from "@/assets/haus2-frontansicht.jpg";
