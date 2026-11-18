@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { CookieSettingsLink } from "@/components/CookieConsent";
 
 export const Route = createFileRoute("/datenschutz")({
   head: () => ({
@@ -42,7 +43,7 @@ function Datenschutz() {
           <h2 className="font-display text-xl">3. Kontakt- und Exposé-Anfragen</h2>
           <p className="mt-2 text-muted-foreground">
             Wenn Sie unser Kontaktformular oder das Formular zur Anforderung des Exposés nutzen,
-            verarbeiten wir die von Ihnen angegebenen Daten (Name, E-Mail-Adresse, ggf.
+            verarbeiten wir die von Ihnen angegebenen Daten (Name, E-Mail-Adresse, Telefonnummer, ggf.
             Nachricht) ausschließlich zur Bearbeitung Ihrer Anfrage. Die Formulare werden über
             Netlify Forms verarbeitet und übermittelt. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b
             DSGVO (Anbahnung eines Vertrags) bzw. lit. f DSGVO (berechtigtes Interesse an der
@@ -74,7 +75,38 @@ function Datenschutz() {
         </section>
 
         <section>
-          <h2 className="font-display text-xl">5. Live-Besucheranzeige auf Wohnungsseiten</h2>
+          <h2 className="font-display text-xl">5. Meta-Pixel und Anzeigen auf Facebook und Instagram</h2>
+          <p className="mt-2 text-muted-foreground">
+            Sofern Sie im Cookie-Banner einwilligen, setzen wir das Meta-Pixel der Meta Platforms
+            Ireland Limited ein. Es erfasst, wie Sie mit unserer Website interagieren (z. B.
+            aufgerufene Seiten, Absenden eines Formulars) und übermittelt diese Daten zusammen mit
+            Ihrer IP-Adresse und Browserkennungen an Meta, damit wir Anzeigen auf Facebook und
+            Instagram messen und verbessern können. Dabei können Daten auch in Drittländer
+            übermittelt werden. Insoweit sind wir und Meta gemeinsam Verantwortliche (Art. 26
+            DSGVO). Rechtsgrundlage ist Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO, § 25 Abs. 1
+            TDDDG). Ohne Ihre Einwilligung wird das Pixel nicht geladen. Sie können Ihre Einwilligung
+            jederzeit mit Wirkung für die Zukunft widerrufen: <CookieSettingsLink />. Weitere
+            Informationen: Datenschutzerklärung von Meta unter{" "}
+            <a
+              href="https://www.facebook.com/privacy/policy"
+              target="_blank"
+              rel="noreferrer"
+              className="text-brass underline"
+            >
+              facebook.com/privacy/policy
+            </a>
+            .
+          </p>
+          <p className="mt-2 text-muted-foreground">
+            Wenn Sie über eine Anzeige auf Facebook oder Instagram direkt ein Formular von Meta
+            ausfüllen (Lead-Formular), werden die dort eingegebenen Daten (z. B. Kontaktdaten,
+            Angaben zu Ihrem Interesse) von Meta erhoben und uns zur Bearbeitung Ihrer Anfrage
+            übermittelt. Für die Datenerhebung durch Meta gilt dessen Datenschutzerklärung.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="font-display text-xl">6. Live-Besucheranzeige auf Wohnungsseiten</h2>
           <p className="mt-2 text-muted-foreground">
             Auf den Detailseiten einzelner Wohnungen zeigen wir an, wenn sich weitere Personen
             gleichzeitig dieselbe Seite ansehen. Dafür wird in Ihrem Browser eine zufällig
@@ -88,7 +120,7 @@ function Datenschutz() {
         </section>
 
         <section>
-          <h2 className="font-display text-xl">6. Ihre Rechte</h2>
+          <h2 className="font-display text-xl">7. Ihre Rechte</h2>
           <p className="mt-2 text-muted-foreground">
             Sie haben das Recht auf Auskunft über Ihre gespeicherten personenbezogenen Daten
             sowie auf Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit
@@ -99,9 +131,9 @@ function Datenschutz() {
         </section>
 
         <section>
-          <h2 className="font-display text-xl">7. Stand</h2>
+          <h2 className="font-display text-xl">8. Stand</h2>
           <p className="mt-2 text-muted-foreground">
-            Diese Datenschutzerklärung wird bei Bedarf aktualisiert. Stand: August 2026.
+            Diese Datenschutzerklärung wird bei Bedarf aktualisiert. Stand: November 2026.
           </p>
         </section>
       </div>
