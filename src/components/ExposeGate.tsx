@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Download, CheckCircle2 } from "lucide-react";
+import { trackLead } from "@/components/CookieConsent";
 
 function encode(data: Record<string, string>) {
   return Object.keys(data)
@@ -10,6 +11,7 @@ function encode(data: Record<string, string>) {
 export function ExposeGate() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [telefon, setTelefon] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "done" | "error">("idle");
 
   async function handleSubmit(e: React.FormEvent) {
@@ -19,11 +21,12 @@ export function ExposeGate() {
       await fetch("/netlify-forms.html", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: encode({ "form-name": "expose-anfrage", name, email }),
+        body: encode({ "form-name": "expose-anfrage", name, email, telefon }),
       });
     } catch {
       // Auch bei Netzwerkfehler geben wir den Download frei — die Anfrage ist nicht kritisch für den Nutzer.
     }
+    trackLead();
     setStatus("done");
     const a = document.createElement("a");
     a.href = "/downloads/Rems-Living-Expose.pdf";
@@ -59,7 +62,7 @@ export function ExposeGate() {
         Alle Eckdaten, Grundrisstypen und Preise auf einen Blick — als PDF direkt in Ihr Postfach bzw.
         zum Sofort-Download.
       </p>
-      <div className="mt-5 grid gap-3 sm:grid-cols-2">
+      <div className="mt-5 grid gap-3 sm:grid-cols-3">
         <input
           required
           type="text"
@@ -76,6 +79,14 @@ export function ExposeGate() {
           onChange={(e) => setEmail(e.target.value)}
           className="border border-input bg-background px-3 py-2.5 text-sm"
         />
+        <input
+          required
+          type="tel"
+          placeholder="Telefonnummer"
+          value={telefon}
+          onChange={(e) => setTelefon(e.target.value)}
+          className="border border-input bg-background px-3 py-2.5 text-sm"
+        />
       </div>
       <button
         type="submit"
@@ -86,8 +97,12 @@ export function ExposeGate() {
         {status === "loading" ? "Einen Moment …" : "Exposé herunterladen"}
       </button>
       <p className="mt-3 text-xs text-muted-foreground">
-        Mit dem Absenden erklären Sie sich einverstanden, dass wir Sie zu Rems Living kontaktieren
-        dürfen. Ihre Daten werden vertraulich behandelt.
+        Mit dem Absenden erklären Sie sich einverstanden, dass wir Sie zu Rems Living per Telefon
+        oder E-Mail kontaktieren dürfen. Ihre Daten werden vertraulich behandelt, Details in der{" "}
+        <a href="/datenschutz" className="underline">
+          Datenschutzerklärung
+        </a>
+        .
       </p>
     </form>
   );
